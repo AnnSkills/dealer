@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.RegistrationPage">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="650.0">
+         <image>
+            <Image url="@../img/forAll.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="login" alignment="CENTER" layoutX="109.0" layoutY="156.0" promptText="login" style="-fx-background-color: #827070c8; -fx-border-color: red;" />
+      <PasswordField alignment="CENTER" layoutX="109.0" layoutY="223.0" promptText="password" style="-fx-background-color: #827070c8; -fx-border-color: red;" />
+      <TextField fx:id="name" alignment="CENTER" layoutX="109.0" layoutY="304.0" promptText="имя" style="-fx-background-color: #827070c8; -fx-border-color: red;" />
+      <TextField fx:id="surname" alignment="CENTER" layoutX="109.0" layoutY="383.0" promptText="фамилия" style="-fx-background-color: #827070c8; -fx-border-color: red;" />
+      <ImageView fitHeight="155.0" fitWidth="158.0" layoutX="326.0" layoutY="146.0">
+         <image>
+            <Image url="@../img/man.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="35.0" layoutY="44.0" prefHeight="34.0" prefWidth="582.0" text="Введите личные данные для создания кабинета" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="35.0" layoutY="471.0" mnemonicParsing="false" onAction="#toBack" prefHeight="34.0" prefWidth="78.0" text="Назад" textAlignment="CENTER" textFill="RED" />
+      <Button fx:id="regButton" layoutX="329.0" layoutY="365.0" mnemonicParsing="false" onAction="#torReg" prefHeight="34.0" prefWidth="151.0" text="Зарегистрироваться" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="labelLogin" layoutX="109.0" layoutY="119.0" prefHeight="18.0" prefWidth="151.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPassword" layoutX="109.0" layoutY="194.0" prefHeight="18.0" prefWidth="151.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelName" layoutX="109.0" layoutY="270.0" prefHeight="18.0" prefWidth="151.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelSurname" layoutX="109.0" layoutY="356.0" prefHeight="18.0" prefWidth="151.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

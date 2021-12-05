@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.WelcomPage">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="650.0" opacity="0.88">
+         <image>
+            <Image url="@../img/MainBackground.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="384.0" layoutY="42.0" prefHeight="46.0" prefWidth="161.0" text="Автосалон" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="login" alignment="CENTER" layoutX="371.0" layoutY="158.0" prefHeight="36.0" prefWidth="190.0" promptText="login" style="-fx-background-color: #d45d5d;" />
+      <PasswordField fx:id="password" alignment="CENTER" layoutX="371.0" layoutY="234.0" prefHeight="36.0" prefWidth="190.0" promptText="password" style="-fx-background-color: #d45d5d;" />
+      <Button fx:id="enterButton" layoutX="403.0" layoutY="337.0" mnemonicParsing="false" onAction="#toEnter" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: #eb2828;" text="Войти" textFill="#000000bf">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="registrationButton" alignment="CENTER" layoutX="403.0" layoutY="405.0" mnemonicParsing="false" onAction="#toRegistration" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: #eb2828;" text="Регистрация" textFill="#000000bf">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="dataLost" alignment="CENTER" layoutX="403.0" layoutY="97.0" prefHeight="18.0" prefWidth="126.0" textFill="#f900ff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="isAccountExist" alignment="CENTER" layoutX="389.0" layoutY="124.0" prefHeight="18.0" prefWidth="154.0" textAlignment="CENTER" textFill="#ff00d4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.UserPage">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="650.0" opacity="0.77">
+         <image>
+            <Image url="@../img/forAll.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="210.0" layoutY="33.0" text="Режим пользователя" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="accountButton" alignment="CENTER" layoutX="39.0" layoutY="104.0" mnemonicParsing="false" onAction="#toGoAccount" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Личный кабинет" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="catalogButton" alignment="CENTER" layoutX="39.0" layoutY="195.0" mnemonicParsing="false" onAction="#toGoAccount" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Каталог авто" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="orderSpisokButton" alignment="CENTER" layoutX="39.0" layoutY="284.0" mnemonicParsing="false" onAction="#toShowClientOrders" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Список заказов" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="commentButtom" alignment="CENTER" layoutX="39.0" layoutY="377.0" mnemonicParsing="false" onAction="#toWriteComment" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Оставить отзыв" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
