@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.UserPage">
    <children>
-      <ImageView fitHeight="540.0" fitWidth="650.0" opacity="0.77">
+      <ImageView fitHeight="540.0" fitWidth="671.0" opacity="0.77">
          <image>
             <Image url="@../img/forAll.png" />
          </image>
@@ -25,12 +24,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="catalogButton" alignment="CENTER" layoutX="39.0" layoutY="195.0" mnemonicParsing="false" onAction="#toGoAccount" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Каталог авто" textAlignment="CENTER">
+      <Button fx:id="catalogButton" alignment="CENTER" layoutX="39.0" layoutY="195.0" mnemonicParsing="false" onAction="#toGoCatalog" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Каталог авто" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="orderSpisokButton" alignment="CENTER" layoutX="39.0" layoutY="284.0" mnemonicParsing="false" onAction="#toShowClientOrders" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Список заказов" textAlignment="CENTER">
+      <Button fx:id="orderSpisokButton" alignment="CENTER" layoutX="241.0" layoutY="195.0" mnemonicParsing="false" onAction="#toShowClientOrders" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Корзина заказов авто" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -38,6 +37,31 @@
       <Button fx:id="commentButtom" alignment="CENTER" layoutX="39.0" layoutY="377.0" mnemonicParsing="false" onAction="#toWriteComment" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Оставить отзыв" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="creditButton" alignment="CENTER" layoutX="241.0" layoutY="104.0" mnemonicParsing="false" onAction="#toShowCounting" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Расчёт цены в кредит" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="buyCar" alignment="CENTER" layoutX="39.0" layoutY="284.0" mnemonicParsing="false" onAction="#toBuyCar" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Оформление авто" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="orderInsuranceButton" alignment="CENTER" layoutX="241.0" layoutY="284.0" mnemonicParsing="false" onAction="#toOrderInsurance" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Заказать страховку" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="contactsButton" alignment="CENTER" layoutX="241.0" layoutY="377.0" mnemonicParsing="false" onAction="#toShowContacts" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #856262c8;" text="Контакты" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" layoutX="39.0" layoutY="486.0" mnemonicParsing="false" onAction="#toGoBack" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: #827070c8;" text="Назад">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
       </Button>
    </children>

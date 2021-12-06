@@ -9,6 +9,7 @@ public interface CarInterf {
     int insert(Car obj);
     void update(Car obj, int id);
     Car selectCar(String model) throws SQLException;
+    Car selectCarById(int id) throws SQLException;
     void delete(int id);
     ArrayList<Car> findAll() throws SQLException;
 }

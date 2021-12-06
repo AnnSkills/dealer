@@ -47,7 +47,7 @@ public class UserSQL implements UserInterf {
     @Override
     public User selectUser(String login, String password) throws SQLException {
         String str = "SELECT * FROM users WHERE login='" + login
-                + "' AND pass='" + password + "'";
+                + "' AND password='" + password + "'";
         return setUserFromDB(str);
     }
 
@@ -89,9 +89,10 @@ public class UserSQL implements UserInterf {
         for (String[] items: result){
             User user = new User();
             user.setIdUser(Integer.parseInt(items[0]));
-            user.setLogin(items[1]);
-            user.setPassword(items[2]);
-            user.setRole(items[3]);
+            user.setIdClient(Integer.parseInt(items[1]));
+            user.setLogin(items[2]);
+            user.setPassword(items[3]);
+            user.setRole(items[4]);
             users.add(user);
         }
         return users;

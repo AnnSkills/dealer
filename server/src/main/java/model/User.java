@@ -11,12 +11,14 @@ import java.util.Objects;
 public class User implements Serializable {
 
     private int idUser;
+    private int idClient;
     private String login;
     private String password;
     private String role;
 
     public User() {
         this.idUser = 0;
+        this.idClient = 0;
         this.login = "";
         this.password = "";
         this.role = "";
@@ -28,6 +30,7 @@ public class User implements Serializable {
         if (!(o instanceof User)) return false;
         User user = (User) o;
         return Objects.equals(this.idUser, user.idUser) &&
+                Objects.equals(this.idClient, user.idClient) &&
                 Objects.equals(this.login, user.login) &&
                 Objects.equals(this.password, user.password) &&
                 Objects.equals(this.role, user.role);
@@ -35,13 +38,14 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idUser, login, password, role);
+        return Objects.hash(idUser, idClient, login, password, role);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "idUser=" + idUser +
+                ", idClient='" + idClient + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +

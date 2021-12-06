@@ -3,6 +3,7 @@ package server;
 import db.factory.*;
 import db.factory.impl.*;
 import db.MyDatabase;
+import db.factory.interfaces.*;
 import model.*;
 
 import java.io.*;
@@ -21,7 +22,7 @@ public class ServerWork {
         this.out = outputStream;
     }
 
-/*
+
     public void getId (int idOperation) throws IOException, SQLException, ClassNotFoundException {
         switch(idOperation){
             case 1:
@@ -34,7 +35,7 @@ public class ServerWork {
                 findUserByLogin();
                 break;
             case 4:
-                getWorkPlaceByName();
+                getCarByModel();
                 break;
             case 5:
                 saveEntityAndGetId();
@@ -57,23 +58,45 @@ public class ServerWork {
     private void getAllEntities() throws SQLException, ClassNotFoundException, IOException{
         String type = (String) in.readObject();
         switch (type) {
-            case "WorkPlace": {
-                IWorkPlace iWorkPlace = new SqlWorkPlace();
-                ArrayList<WorkPlace> list = iWorkPlace.findAll();
+            case "Car": {
+                CarInterf iCar = new CarSQL();
+                ArrayList<Car> list = iCar.findAll();
                 out.writeObject(list);
                 break;
             }
             case "User": {
-                IUser iUser = new SqlUser();
+                UserInterf iUser = new UserSQL();
                 ArrayList<User> list = iUser.findAll();
                 out.writeObject(list);
                 break;
             }
-            case "History": {
-                IHistory iHistory = new SqlHistory();
-                ArrayList<History> list = iHistory.findAll();
+            case "Client": {
+                ClientInterf iClient = new ClientSQL();
+                ArrayList<Client> list = iClient.findAll();
                 out.writeObject(list);
                 break;
+            }
+            case "OrderList": {
+                OrderListInterf iOrderList = new OrderListSQL();
+                ArrayList<OrderList> list = iOrderList.findAll();
+                out.writeObject(list);
+                break;
+            }
+            case "OrderCar": {
+                OrderCarInterf iOrderCar = new OrderCarSQL();
+                ArrayList<OrderCar> list = iOrderCar.findAll();
+                out.writeObject(list);
+                break;
+            }
+            case "Comment":{
+                CommentInterf iComment = new CommentSQL();
+                ArrayList<Comment> list = iComment.findAll();
+                out.writeObject(list);
+            }
+            case "Insurance":{
+                InsuranceInterf insuranceInterf = new InsuranceSQL();
+                ArrayList<Insurance> list = insuranceInterf.findAll();
+                out.writeObject(list);
             }
             default:
                 break;
@@ -84,23 +107,41 @@ public class ServerWork {
         String type = (String) in.readObject();
         int id = (int) in.readObject();
         switch (type) {
-            case "WorkPlace":
+            case "Car":
             {
-                IWorkPlace iWorkPlace = new SqlWorkPlace();
-                iWorkPlace.delete(id);
+                CarInterf iCar = new CarSQL();
+                iCar.delete(id);
                 break;
             }
             case "User":
             {
-                IUser iUser = new SqlUser();
+                UserInterf iUser = new UserSQL();
                 iUser.delete(id);
                 break;
             }
-            case "Salary":
-            {
-                ISalary iSalary = new SqlSalary();
-                iSalary.delete(id);
+            case "Client": {
+                ClientInterf iClient = new ClientSQL();
+                iClient.delete(id);
                 break;
+            }
+            case "OrderList": {
+                OrderListInterf iOrderList = new OrderListSQL();
+                iOrderList.delete(id);
+                break;
+            }
+            case "OrderCar": {
+                OrderCarInterf iOrderCar = new OrderCarSQL();
+               iOrderCar.delete(id);
+                break;
+            }
+            case "Comment":{
+                CommentInterf iComment = new CommentSQL();
+                iComment.delete(id);
+                break;
+            }
+            case "Insurance":{
+                InsuranceInterf insuranceInterf = new InsuranceSQL();
+                insuranceInterf.delete(id);
             }
             default:
                 break;
@@ -112,26 +153,52 @@ public class ServerWork {
         String type = (String) in.readObject();
         int id = (int) in.readObject();
         switch (type) {
-            case "Person":
-            {
-                IPerson iPerson = new SqlPerson();
-                Person person = iPerson.selectPerson(id);
-                out.writeObject(person);
-                break;
-            }
-            case "Salary":
-            {
-                ISalary iSalary = new SqlSalary();
-                Salary salary = iSalary.selectSalary(id);
-                out.writeObject(salary);
-                break;
-            }
             case "User":
             {
-                IUser iUser = new SqlUser();
-                User user = iUser.selectUserById(id);
-                out.writeObject(user);
+            UserInterf userInterf = new UserSQL();
+            User user = userInterf.selectUserById(id);
+            out.writeObject(user);
+            break;
+            }
+            case "Client":
+            {
+                ClientInterf clientInterf = new ClientSQL();
+                Client client = clientInterf.selectClient(id);
+                out.writeObject(client);
                 break;
+            }
+            case "Car":
+            {
+               CarInterf carInterf = new CarSQL();
+               Car car = carInterf.selectCarById(id);
+                out.writeObject(car);
+                break;
+            }
+            case "OrderCar":
+            {
+                OrderCarInterf orderCarInterf = new OrderCarSQL();
+                OrderCar orderCar = orderCarInterf.selectOrderCar(id);
+                out.writeObject(orderCar);
+                break;
+            }
+            case "OrderList":
+            {
+                OrderListInterf orderListInterf = new OrderListSQL();
+                OrderList orderList = orderListInterf.selectOrderList(id);
+                out.writeObject(orderList);
+                break;
+            }
+            case "Comment":
+            {
+                CommentInterf commentInterf = new CommentSQL();
+                Comment comment = commentInterf.selectComment(id);
+                out.writeObject(comment);
+                break;
+            }
+            case "Insurance":{
+                InsuranceInterf insuranceInterf = new InsuranceSQL();
+                Insurance insurance = insuranceInterf.selectInsurance(id);
+                out.writeObject(insurance);
             }
             default:
                 break;
@@ -145,31 +212,51 @@ public class ServerWork {
             {
                 User user = (User) in.readObject();
                 int idUser = (int) in.readObject();
-                int idPerson = (int) in.readObject();
-                user.setIdPerson(idPerson);
+                int idClient = (int) in.readObject();
+                user.setIdClient(idClient);
                 user.setIdUser(idUser);
-                IUser iUser = new SqlUser();
-                iUser.update(user, idUser);
+                UserInterf userInterf = new UserSQL();
+                userInterf.update(user,idUser);
                 break;
             }
-            case "Person":
+            case "Client":
             {
-                Person person = (Person) in.readObject();
-                int idPerson = (int) in.readObject();
+                Client client = (Client) in.readObject();
+                int idClient = (int) in.readObject();
                 int idUser = (int) in.readObject();
-                person.setIdPerson(idPerson);
-                person.setIdUser(idUser);
-                IPerson iPerson = new SqlPerson();
-                iPerson.update(person, idPerson);
+                client.setIdClient(idClient);
+                client.setIdUser(idUser);
+                ClientInterf clientInterf = new ClientSQL();
+                clientInterf.update(client,idClient);
                 break;
             }
-            case "WorkPlace":
+            case "Car":
             {
-                WorkPlace workPlace = (WorkPlace) in.readObject();
-                int idWork = (int) in.readObject();
-                workPlace.setIdWorkPlace(idWork);
-                IWorkPlace iWorkPlace = new SqlWorkPlace();
-                iWorkPlace.update(workPlace, idWork);
+                Car car = (Car) in.readObject();
+                int idCar = (int) in.readObject();
+                car.setIdCar(idCar);
+                CarInterf carInterf = new CarSQL();
+                carInterf.update(car, idCar);
+                break;
+            }
+            case "Comment":
+            {
+                Comment comment = (Comment) in.readObject();
+                int idComment = (int) in.readObject();
+                comment.setIdComment(idComment);
+                CommentInterf commentInterf = new CommentSQL();
+                commentInterf.update(comment, idComment);
+                break;
+            }
+            case "OrderCar":
+            {
+                OrderCar orderCar = (OrderCar) in.readObject();
+                int idOrderCar =(int)in.readObject();
+                int idClient = (int)in.readObject();
+                orderCar.setIdOrdCar(idOrderCar);
+                orderCar.setIdClient(idClient);
+                OrderCarInterf orderCarInterf = new OrderCarSQL();
+                orderCarInterf.update(orderCar,idOrderCar);
                 break;
             }
             default:
@@ -184,42 +271,53 @@ public class ServerWork {
             case "User":
             {
                 User user = (User) in.readObject();
-                IUser iUser = new SqlUser();
+                UserInterf iUser = new UserSQL();
                 int id = iUser.insert(user);
                 out.writeObject(id);
                 break;
             }
-            case "Person":
+            case "Client":
             {
-                Person person = (Person) in.readObject();
-                IPerson iPerson = new SqlPerson();
-                int id = iPerson.insert(person);
+                Client client = (Client) in.readObject();
+                ClientInterf clientInterf = new ClientSQL();
+                int id = clientInterf.insert(client);
                 out.writeObject(id);
                 break;
             }
-            case "WorkPlace":
+            case "Car":
             {
-                WorkPlace workPlace = (WorkPlace) in.readObject();
-                IWorkPlace iWorkPlace = new SqlWorkPlace();
-                int id = iWorkPlace.insert(workPlace);
+                Car car = (Car) in.readObject();
+                CarInterf carInterf = new CarSQL();
+                int id = carInterf.insert(car);
                 out.writeObject(id);
                 break;
             }
-            case "Salary":
-            {
-                Salary salary = (Salary) in.readObject();
-                ISalary iSalary = new SqlSalary();
-                int id = iSalary.insert(salary);
+            case "OrderList": {
+                OrderList orderList = (OrderList) in.readObject();
+                OrderListInterf orderListInterf = new OrderListSQL();
+                int id = orderListInterf.insert(orderList);
                 out.writeObject(id);
                 break;
             }
-            case "History":
-            {
-                History history = (History) in.readObject();
-                IHistory iHistory = new SqlHistory();
-                int id = iHistory.insert(history);
+            case "OrderCar": {
+                OrderCar orderCar = (OrderCar) in.readObject();
+                OrderCarInterf orderCarInterf = new OrderCarSQL();
+                int id = orderCarInterf.insert(orderCar);
                 out.writeObject(id);
                 break;
+            }
+            case "Comment":{
+                Comment comment = (Comment)in.readObject();
+                CommentInterf commentInterf = new CommentSQL();
+                int id = commentInterf.insert(comment);
+                out.writeObject(id);
+                break;
+            }
+            case "Insurance":{
+                Insurance insurance = (Insurance)in.readObject();
+                InsuranceInterf insuranceInterf = new InsuranceSQL();
+                int id = insuranceInterf.insert(insurance);
+                out.writeObject(id);
             }
             default:
                 break;
@@ -228,16 +326,16 @@ public class ServerWork {
 
     }
 
-    private void getWorkPlaceByName() throws IOException, ClassNotFoundException, SQLException {
-        String name = (String) in.readObject();
-        IWorkPlace iWorkPlace = new SqlWorkPlace();
-        WorkPlace workPlace = iWorkPlace.selectWorkPlace(name);
-        out.writeObject(workPlace);
+    private void getCarByModel() throws IOException, ClassNotFoundException, SQLException {
+        String model = (String) in.readObject();
+        CarInterf carInterf = new CarSQL();
+        Car car = carInterf.selectCar(model);
+        out.writeObject(car);
     }
 
     private void findUserByLogin() throws IOException, ClassNotFoundException, SQLException {
         String login = (String) in.readObject();
-        IUser iUser = new SqlUser();
+        UserInterf iUser = new UserSQL();
         User user = iUser.selectUserByLogin(login);
         out.writeObject(user);
     }
@@ -246,11 +344,10 @@ public class ServerWork {
         String login = (String) in.readObject();
         String password = (String) in.readObject();
 
-        IUser iUser = new SqlUser();
+        UserInterf iUser = new UserSQL();
         User user = iUser.selectUser(login, password);
 
         out.writeObject(user);
     }
 
- */
 }

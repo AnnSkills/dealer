@@ -63,6 +63,21 @@ public class CarSQL implements CarInterf {
     }
 
     @Override
+    public Car selectCarById(int id) throws SQLException {
+        String str = "SELECT * FROM car WHERE id='" + id +"'";
+        ArrayList<String[]> result = dbConnection.select(str);
+        Car car = new Car();
+        for (String[] items: result){
+            car.setIdCar(Integer.parseInt(items[0]));
+            car.setVinCar(items[1]);
+            car.setModelCar(items[2]);
+            car.setColorCar(items[3]);
+            car.setPriceCar(Integer.parseInt(items[4]));
+        }
+        return car;
+    }
+
+    @Override
     public void delete(int id) {
         String str = "DELETE FROM car WHERE id = " + id;
         dbConnection.delete(str);

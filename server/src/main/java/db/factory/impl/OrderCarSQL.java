@@ -47,6 +47,14 @@ public class OrderCarSQL implements OrderCarInterf {
     }
 
     @Override
+    public void update(OrderCar obj, int id) {
+        String str = "UPDATE order_car SET order_car.created_at="
+                + obj.getOrderDate()
+                + "'  WHERE order_car.id=" + id;
+        dbConnection.update(str);
+    }
+
+    @Override
     public void delete(int id) {
         String str = "DELETE FROM order_car WHERE id = " + id;
         dbConnection.delete(str);

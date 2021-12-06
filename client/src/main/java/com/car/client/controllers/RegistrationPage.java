@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class RegistrationPage {
 
@@ -58,7 +59,13 @@ public class RegistrationPage {
         assert login != null : "fx:id=\"login\" was not injected: check your FXML file 'registration-page.fxml'.";
         assert name != null : "fx:id=\"name\" was not injected: check your FXML file 'registration-page.fxml'.";
         assert surname != null : "fx:id=\"surname\" was not injected: check your FXML file 'registration-page.fxml'.";
+
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'registration-page.fxml'.";
+        backButton.setOnAction(actionEvent -> {
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.close();
+        });
+
         assert regButton != null : "fx:id=\"regButton\" was not injected: check your FXML file 'registration-page.fxml'.";
         assert labelLogin != null : "fx:id=\"labelLogin\" was not injected: check your FXML file 'registration-page.fxml'.";
         assert labelPassword != null : "fx:id=\"labelPassword\" was not injected: check your FXML file 'registration-page.fxml'.";
