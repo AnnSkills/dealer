@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.OneClientOrders">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="650.0" opacity="0.73">
+         <image>
+            <Image url="@../img/road.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="198.0" layoutY="32.0" prefHeight="18.0" prefWidth="253.0" text="Личные заказы" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableOrders" layoutX="39.0" layoutY="101.0" opacity="0.61" prefHeight="314.0" prefWidth="593.0">
+        <columns>
+          <TableColumn fx:id="idOrderColumn" prefWidth="49.600006103515625" text="id &#10;заказа" />
+          <TableColumn fx:id="vinColumn" prefWidth="76.79996490478516" text=" VIN авто" />
+            <TableColumn fx:id="priceColumn" prefWidth="119.199951171875" text="цена" />
+            <TableColumn fx:id="modelColumn" prefWidth="102.39996337890625" text="марка" />
+            <TableColumn fx:id="nameColumn" prefWidth="75.0" text="имя" />
+            <TableColumn fx:id="surnameColumn" prefWidth="85.60000610351562" text="фамилия" />
+            <TableColumn fx:id="dateColumn" prefWidth="82.40004882812502" text="дата" />
+        </columns>
+      </TableView>
+      <ScrollBar layoutX="24.0" layoutY="101.0" orientation="VERTICAL" prefHeight="314.0" prefWidth="14.0" />
+      <Button fx:id="backButton" layoutX="24.0" layoutY="468.0" mnemonicParsing="false" onAction="#toGoBack" opacity="0.63" prefHeight="26.0" prefWidth="57.0" text="Назад">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="reportButton" layoutX="161.0" layoutY="469.0" mnemonicParsing="false" onAction="#makeReport" opacity="0.73" prefHeight="26.0" prefWidth="180.0" text="Создание отчета">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -27,8 +27,8 @@ public class InsuranceSQL implements InsuranceInterf {
 
     @Override
     public int insert(Insurance obj) {
-        String str = "INSERT INTO insurance (insurance_type,id_client) VALUES("
-                + obj.getInsuranceName() + ", "+ obj.getIdClient() + "') RETURNING id";
+        String str = "INSERT INTO insurance (insurance_type, id_client) VALUES('"
+                + obj.getInsuranceName() + "', "+ obj.getIdClient() + ")";
         ArrayList<String[]> result = dbConnection.insert(str);
         return Integer.parseInt(result.get(0)[0]);
     }

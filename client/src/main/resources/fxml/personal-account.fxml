@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.PersonalAccount">
    <children>
       <ImageView fitHeight="540.0" fitWidth="668.0" opacity="0.74">
@@ -36,9 +35,9 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="name" alignment="CENTER" layoutX="415.0" layoutY="144.0" onAction="#showName" prefHeight="34.0" prefWidth="170.0" style="-fx-background-color: white;" />
-      <TextField fx:id="surname" alignment="CENTER" layoutX="414.0" layoutY="270.0" onAction="#showSurname" prefHeight="34.0" prefWidth="170.0" style="-fx-background-color: white;" />
-      <TextField fx:id="login" alignment="CENTER" layoutX="415.0" layoutY="411.0" onAction="#showLogin" prefHeight="34.0" prefWidth="170.0" style="-fx-background-color: white;" />
+      <TextField fx:id="name" alignment="CENTER" layoutX="415.0" layoutY="144.0" prefHeight="34.0" prefWidth="170.0" style="-fx-background-color: white;" />
+      <TextField fx:id="surname" alignment="CENTER" layoutX="414.0" layoutY="270.0" prefHeight="34.0" prefWidth="170.0" style="-fx-background-color: white;" />
+      <TextField fx:id="login" alignment="CENTER" layoutX="415.0" layoutY="411.0" prefHeight="34.0" prefWidth="170.0" style="-fx-background-color: white;" />
       <Button fx:id="backButton" layoutX="74.0" layoutY="428.0" mnemonicParsing="false" onAction="#toGoBack" prefHeight="34.0" prefWidth="170.0" text="Назад">
          <font>
             <Font size="14.0" />

@@ -11,4 +11,5 @@ public interface ClientInterf {
     Client selectClient(int id) throws SQLException;
     void delete(int id);
     ArrayList<Client> findAll() throws SQLException;
+    ArrayList<Client> findAll(String type, String criteria) throws SQLException;
 }

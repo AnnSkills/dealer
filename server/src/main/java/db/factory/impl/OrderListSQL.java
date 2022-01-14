@@ -28,7 +28,7 @@ public class OrderListSQL implements OrderListInterf {
     @Override
     public int insert(OrderList obj) {
         String str = "INSERT INTO order_list (id_order, id_car) VALUES(" + obj.getIdOrder()
-                + ", " + obj.getIdCar() + ") RETURNING id";
+                + ", " + obj.getIdCar() + ") ";
         ArrayList<String[]> result = dbConnection.insert(str);
         return Integer.parseInt(result.get(0)[0]);
     }

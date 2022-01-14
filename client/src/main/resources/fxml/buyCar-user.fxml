@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.BuyCarUser">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="650.0" opacity="0.76">
+         <image>
+            <Image url="@../img/road.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="213.0" layoutY="25.0" prefHeight="18.0" prefWidth="223.0" text="Оформление авто" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="catalogTable" layoutX="53.0" layoutY="60.0" opacity="0.82" prefHeight="257.0" prefWidth="548.0" style="-fx-background-color: grey;">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="54.39996147155762" text="id" />
+            <TableColumn fx:id="vinColumn" prefWidth="113.60004425048828" text="VIN номер" />
+            <TableColumn fx:id="modelColumn" prefWidth="128.79998779296875" text="модель" />
+            <TableColumn fx:id="colorColumn" prefWidth="102.4000244140625" text="цвет" />
+            <TableColumn fx:id="priceColumn" prefWidth="144.79995727539062" text="стоимость" />
+         </columns>
+      </TableView>
+      <ScrollBar fx:id="scrollTable" layoutX="39.0" layoutY="60.0" orientation="VERTICAL" prefHeight="258.0" prefWidth="14.0" />
+      <TextField fx:id="idInput" layoutX="56.0" layoutY="362.0" onAction="#toReadIdInput" opacity="0.55" prefHeight="26.0" prefWidth="198.0" promptText="id" />
+      <Label layoutX="56.0" layoutY="340.0" prefHeight="22.0" prefWidth="217.0" text="Введите id авто для покупки" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="buyCarUser" alignment="CENTER" layoutX="274.0" layoutY="362.0" mnemonicParsing="false" onAction="#toBuyCarUser" opacity="0.73" prefHeight="26.0" prefWidth="198.0" text="Оформить" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" alignment="CENTER" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#toGoBack" prefHeight="26.0" prefWidth="64.0" text="Назад">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Button>
+      <Label fx:id="coolLabel" alignment="CENTER" layoutX="53.0" layoutY="396.0" prefHeight="40.0" prefWidth="536.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="toYourOrders" layoutX="73.0" layoutY="449.0" prefHeight="18.0" prefWidth="150.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonGo" layoutX="274.0" layoutY="448.0" mnemonicParsing="false" onAction="#toGoUserOrders" opacity="0.65" prefHeight="26.0" prefWidth="198.0" text="Перейти к карзине" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

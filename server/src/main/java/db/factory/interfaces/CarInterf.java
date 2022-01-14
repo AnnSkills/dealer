@@ -12,4 +12,5 @@ public interface CarInterf {
     Car selectCarById(int id) throws SQLException;
     void delete(int id);
     ArrayList<Car> findAll() throws SQLException;
+    ArrayList<Car> findAll(String model) throws SQLException;
 }

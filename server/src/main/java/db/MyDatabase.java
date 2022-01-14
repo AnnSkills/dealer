@@ -30,12 +30,13 @@ public class MyDatabase {
         }
         return instance;
     }
-
     public ArrayList<String[]> insert(String query) {
         Command command = new InsertCommand(query, statement);
         ArrayList<String[]> result = new ArrayList<String[]>();
         try {
-            ResultSet resultSet = command.execute().getResultSet();
+            command.execute();
+            statement.executeQuery("SELECT LAST_INSERT_ID()");
+            ResultSet resultSet = statement.getResultSet();
             int count = resultSet.getMetaData().getColumnCount();
 
             while (resultSet.next()) {
@@ -50,7 +51,6 @@ public class MyDatabase {
         }
         return result;
     }
-
     public ArrayList<String[]> select(String query) throws SQLException {
         Command command = new SelectCommand(query, statement);
         ArrayList<String[]> result = new ArrayList<String[]>();

@@ -28,7 +28,7 @@ public class CarSQL implements CarInterf {
     @Override
     public int insert(Car obj) {
         String str = "INSERT INTO car (vin, model, color, price) VALUES('"
-                + obj.getVinCar() +  "','" + obj.getModelCar() +  "','" + obj.getColorCar() + "','" + obj.getPriceCar() + "') RETURNING id";
+                + obj.getVinCar() +  "','" + obj.getModelCar() +  "','" + obj.getColorCar() + "','" + obj.getPriceCar() + "') ";
         ArrayList<String[]> result = dbConnection.insert(str);
         return Integer.parseInt(result.get(0)[0]);
     }
@@ -86,6 +86,23 @@ public class CarSQL implements CarInterf {
     @Override
     public ArrayList<Car> findAll() throws SQLException {
         String str = "SELECT * FROM car";
+        ArrayList<String[]> result = dbConnection.select(str);
+        ArrayList<Car> cars = new ArrayList<>();
+        for (String[] items: result){
+            Car car = new Car();
+            car.setIdCar(Integer.parseInt(items[0]));
+            car.setVinCar(items[1]);
+            car.setModelCar(items[2]);
+            car.setColorCar(items[3]);
+            car.setPriceCar(Integer.parseInt(items[4]));
+            cars.add(car);
+        }
+        return cars;
+    }
+
+    @Override
+    public ArrayList<Car> findAll(String model) throws SQLException {
+        String str = "SELECT * FROM car WHERE model='" + model +"'";
         ArrayList<String[]> result = dbConnection.select(str);
         ArrayList<Car> cars = new ArrayList<>();
         for (String[] items: result){

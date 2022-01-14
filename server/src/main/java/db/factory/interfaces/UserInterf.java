@@ -13,4 +13,6 @@ public interface UserInterf {
     void delete(int id);
     User selectUserById(int id) throws SQLException;
     ArrayList<User> findAll() throws SQLException;
+
+    ArrayList<User> findByLogin(String log) throws SQLException;
 }

@@ -27,8 +27,8 @@ public class CommentSQL implements CommentInterf {
     @Override
     public int insert(Comment obj) {
         String str = "INSERT INTO comment (id_client, topic, comment_text, estimation) VALUES("
-                + obj.getIdClient() + ", "+ obj.getCommentTopic() + ",'" + obj.getCommentText() + "','"
-                + obj.getCommentEstimation()  + "') RETURNING id";
+                + obj.getIdClient() + ", '"+ obj.getCommentTopic() + "','" + obj.getCommentText() + "','"
+                + obj.getCommentEstimation()  + "') ";
         ArrayList<String[]> result = dbConnection.insert(str);
         return Integer.parseInt(result.get(0)[0]);
     }

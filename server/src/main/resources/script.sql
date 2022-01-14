@@ -9,7 +9,7 @@ create table if not exists users
     password varchar(30) not null,
     role varchar(30),
     primary key(id)
-    );
+);
 create table if not exists client
 (
     id int auto_increment not null,
@@ -18,7 +18,7 @@ create table if not exists client
     surname varchar(30),
     primary key(id),
     foreign key (id_user) references users(id)
-    );
+);
 alter table users add foreign key (id_client) references client(id) on update cascade on delete cascade;
 create table if not exists car
 (
@@ -28,24 +28,18 @@ create table if not exists car
     color varchar(30),
     price int,
     primary key (id)
-    );
+);
 create table if not exists order_car
 (
     id int auto_increment not null,
+    id_car int,
     created_at datetime,
     id_client int,
     primary key(id),
-    foreign key(id_client) references client(id) on delete cascade
-    );
+    foreign key(id_client) references client(id) on delete cascade,
+    foreign key(id_car) references car(id) on delete cascade
+);
 
-create table if not exists order_list(
-     id int auto_increment not null,
-     id_order int,
-     id_car int,
-     primary key (id),
-     foreign key(id_order) references order_car(id),
-    foreign key(id_car) references car(id)
-    );
 create table if not exists comment
 (
     id int auto_increment not null,
@@ -55,9 +49,7 @@ create table if not exists comment
     estimation int,
     primary key(id),
     foreign key(id_client) references client(id) on delete cascade
-    );
-insert into users(login, password, role) values ('admin','admin','Admin');
-
+);
 create table if not exists insurance
 (
     id int auto_increment not null,
@@ -65,4 +57,13 @@ create table if not exists insurance
     id_client int,
     primary key(id),
     foreign key(id_client) references client(id) on delete cascade
-)
+);
+
+insert into users(login, password, role) values ('admin','admin','Admin');
+insert into users(login, password, role) values ('user','user','User');
+insert into client(id_user, name, surname) values (2,'Bob','Martin');
+
+use ann_db;
+update users
+set id_client = 1
+where id = 2;

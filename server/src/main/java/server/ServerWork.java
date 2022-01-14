@@ -1,8 +1,8 @@
 package server;
 
-import db.factory.*;
-import db.factory.impl.*;
+//import db.factory.impl.*;
 import db.MyDatabase;
+import db.factory.impl.*;
 import db.factory.interfaces.*;
 import model.*;
 
@@ -49,6 +49,42 @@ public class ServerWork {
             case 8:
                 getEnityById();
                 break;
+            case 9:
+                searchEntity();
+            default:
+                break;
+        }
+    }
+
+    private void searchEntity() throws IOException, ClassNotFoundException, SQLException {
+        String type = (String) in.readObject();
+        switch (type) {
+            case "User":
+            {
+                String login = (String) in.readObject();
+                UserInterf userInterf = new UserSQL();
+                ArrayList<User> list = userInterf.findByLogin(login);
+                out.writeObject(list);
+                break;
+            }
+            case "Client":
+            {
+                String typeS = (String) in.readObject();
+                String criteria = (String) in.readObject();
+                ClientInterf clientInterf = new ClientSQL();
+                ArrayList<Client> list = clientInterf.findAll(typeS, criteria);
+                out.writeObject(list);
+                break;
+            }
+            case "Car":
+            {
+                String typeS = (String) in.readObject();
+                CarInterf carInterf = new CarSQL();
+                ArrayList<Car> list = carInterf.findAll(typeS);
+                out.writeObject(list);
+
+                break;
+            }
             default:
                 break;
         }
@@ -253,7 +289,9 @@ public class ServerWork {
                 OrderCar orderCar = (OrderCar) in.readObject();
                 int idOrderCar =(int)in.readObject();
                 int idClient = (int)in.readObject();
+                int idCar =(int)in.readObject();
                 orderCar.setIdOrdCar(idOrderCar);
+                orderCar.setIdCar(idCar);
                 orderCar.setIdClient(idClient);
                 OrderCarInterf orderCarInterf = new OrderCarSQL();
                 orderCarInterf.update(orderCar,idOrderCar);

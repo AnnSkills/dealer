@@ -19,8 +19,6 @@ public class Server {
                 try {
                     new MultiThreadServer(socket);
                 } catch (IOException e) {
-                    // Если завершится неудачей, закрывается сокет,
-                    // в противном случае, нить закроет его:
                     socket.close();
                 }
             }

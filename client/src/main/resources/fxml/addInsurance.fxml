@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.AddInsurance">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="660.0" opacity="0.81">
+         <image>
+            <Image url="@../img/forAll.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="184.0" layoutY="33.0" prefHeight="18.0" prefWidth="292.0" text="Оформить заказ на страховку" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="103.0" layoutY="142.0" text="Тип страховки">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="45.0" layoutY="34.0" mnemonicParsing="false" onAction="#toGoBack" opacity="0.65" text="Назад">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="combBox" layoutX="272.0" layoutY="139.0" opacity="0.77" prefHeight="26.0" prefWidth="292.0" promptText="тип" />
+      <Button fx:id="ordInsButton" layoutX="230.0" layoutY="221.0" mnemonicParsing="false" onAction="#toOrderInsurance" opacity="0.57" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: red;" text="Заказать">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <TextArea layoutX="52.0" layoutY="303.0" opacity="0.65" prefHeight="170.0" prefWidth="556.0" promptText="Преимущества программы страхования автосалона" text="ПРЕИМУЩЕСТВА ПРОГРАММЫ:&#10;1- Возможность заявить страховой случай в салоне официального дилера &#10;2- В случае повреждения стекол и приборов внешнего освещения ТС &#10;представление документов из компетентных органов не требуется&#10;3- Круглосуточная эвакуация автомобиля при каждом страховом случае&#10;4- Возможность оплаты страхового полиса в рассрочку без увеличения его стоимости&#10;5- Возможность осуществления ремонта у официального дилера &#10;6- Ответственность страховых компаний не привязана к моменту постановки автомобиля &#10;на учет в ГИБДД (при заключении договора страхования на территории официального дилера)" />
+      <Label fx:id="done" alignment="CENTER" layoutX="161.0" layoutY="78.0" prefHeight="38.0" prefWidth="337.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

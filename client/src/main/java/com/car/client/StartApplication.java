@@ -11,8 +11,8 @@ public class StartApplication extends Application{
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("welcom-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("/fxml/welcom-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 540);
         stage.setTitle("Система учёта продаж автомобилей в автосалоне");
         stage.setScene(scene);
         stage.show();

@@ -25,7 +25,9 @@ public class UserSQL implements UserInterf {
 
     @Override
     public void update(User obj, int id) {
-        String str = "UPDATE users SET users.login= "
+        String str = "UPDATE users SET " +"users.id_client="+
+                obj.getIdClient()
+                +", users.login='"
                 + obj.getLogin()
                 + "', users.password='"
                 + obj.getPassword()
@@ -39,7 +41,7 @@ public class UserSQL implements UserInterf {
     public int insert(User obj) {
         String str = "INSERT INTO users (login, password, role) VALUES('"
                 + obj.getLogin() + "','" + obj.getPassword() + "','"
-                + obj.getRole() + "') RETURNING id";
+                + obj.getRole() + "') ";
         ArrayList<String[]> result = dbConnection.insert(str);
         return Integer.parseInt(result.get(0)[0]);
     }
@@ -62,9 +64,11 @@ public class UserSQL implements UserInterf {
         User user = new User();
         for (String[] items: result){
             user.setIdUser(Integer.parseInt(items[0]));
-            user.setLogin(items[1]);
-            user.setPassword(items[2]);
-            user.setRole(items[3]);
+            if (items[1] != null)
+                user.setIdClient(Integer.parseInt(items[1]));
+            user.setLogin(items[2]);
+            user.setPassword(items[3]);
+            user.setRole(items[4]);
         }
         return user;
     }
@@ -84,6 +88,27 @@ public class UserSQL implements UserInterf {
     @Override
     public ArrayList<User> findAll() throws SQLException {
         String str = "SELECT * FROM users";
+        ArrayList<String[]> result = dbConnection.select(str);
+        ArrayList<User> users = new ArrayList<>();
+        for (String[] items: result){
+            User user = new User();
+            user.setIdUser(Integer.parseInt(items[0]));
+            if(items[1]!=null)
+            user.setIdClient(Integer.parseInt(items[1]));
+            user.setLogin(items[2]);
+            user.setPassword(items[3]);
+            user.setRole(items[4]);
+            users.add(user);
+        }
+        return users;
+    }
+
+    @Override
+    public ArrayList<User> findByLogin(String log) throws SQLException{
+        String str = "SELECT * FROM users WHERE login LIKE '%" + log + "%'";
+        return getUsersAll(str);
+    }
+    private ArrayList<User> getUsersAll(String str) throws SQLException {
         ArrayList<String[]> result = dbConnection.select(str);
         ArrayList<User> users = new ArrayList<>();
         for (String[] items: result){

@@ -26,7 +26,7 @@ public class ClientSQL implements ClientInterf {
     @Override
     public int insert(Client obj) {
         String str = "INSERT INTO client (id_user, name, surname) VALUES("
-                + obj.getIdUser() + ", "+ obj.getClientName() + ",'" + obj.getClientSurname() + "') RETURNING id";
+                + obj.getIdUser() + ", '"+ obj.getClientName() + "','" + obj.getClientSurname() + "') ";
         ArrayList<String[]> result = dbConnection.insert(str);
         return Integer.parseInt(result.get(0)[0]);
     }
@@ -79,4 +79,37 @@ public class ClientSQL implements ClientInterf {
         }
         return clients;
     }
+
+    @Override
+    public ArrayList<Client> findAll(String type, String criteria) throws SQLException {
+            String str = "SELECT * FROM client WHERE ";
+            switch (type) {
+                case "Имя":
+                    str += "name ";
+                    break;
+                case "Фамилия":
+                    str += "surname ";
+                    break;
+                default:
+                    break;
+            }
+            str += "LIKE '%" + criteria + "%'";
+            return getClientsAll(str);
+
+
+    }
+    private ArrayList<Client> getClientsAll(String str) throws SQLException {
+        ArrayList<String[]> result = dbConnection.select(str);
+        ArrayList<Client> clients = new ArrayList<>();
+        for (String[] items: result){
+            Client client = new Client();
+            client.setIdClient(Integer.parseInt(items[0]));
+            client.setIdUser(Integer.parseInt(items[1]));
+            client.setClientName(items[2]);
+            client.setClientSurname(items[3]);
+            clients.add(client);
+        }
+        return clients;
+    }
+
 }

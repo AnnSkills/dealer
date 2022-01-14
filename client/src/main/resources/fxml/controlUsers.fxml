@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.car.client.controllers.ManageClientsAdmin">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="650.0" opacity="0.73">
+         <image>
+            <Image url="@../img/road.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table" layoutX="66.0" layoutY="92.0" opacity="0.62" prefHeight="200.0" prefWidth="540.0">
+         <columns>
+            <TableColumn fx:id="columnLogin" prefWidth="123.0" text="Логин" />
+            <TableColumn fx:id="columnPassword" prefWidth="132.0" text="Пароль" />
+            <TableColumn fx:id="columnName" prefWidth="130.39996337890625" text="Имя" />
+            <TableColumn fx:id="columnSurname" prefWidth="153.60000610351562" text="Фамилия" />
+         </columns>
+      </TableView>
+      <Button fx:id="buttAdd" layoutX="57.0" layoutY="339.0" mnemonicParsing="false" onAction="#toAdd" opacity="0.71" prefHeight="34.0" prefWidth="160.0" text="Добавить" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttEdit" layoutX="245.0" layoutY="339.0" mnemonicParsing="false" onAction="#toEdit" opacity="0.71" prefHeight="34.0" prefWidth="160.0" text="Изменить" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttDelete" layoutX="427.0" layoutY="339.0" mnemonicParsing="false" onAction="#toDelete" opacity="0.71" prefHeight="34.0" prefWidth="160.0" text="Удалить" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="searchLogin" alignment="CENTER" layoutX="186.0" layoutY="452.0" prefHeight="34.0" prefWidth="171.0" promptText="введите значение" />
+      <Button fx:id="buttToSearch" layoutX="58.0" layoutY="401.0" mnemonicParsing="false" onAction="#toSearch" prefHeight="34.0" prefWidth="78.0" text="Поиск">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttToRefresh" layoutX="398.0" layoutY="401.0" mnemonicParsing="false" onAction="#toRefresh" prefHeight="34.0" prefWidth="78.0" text="Вернуть">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttBack" layoutX="57.0" layoutY="28.0" mnemonicParsing="false" onAction="#toBack" opacity="0.71" prefHeight="26.0" prefWidth="61.0" text="Назад">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="217.0" layoutY="27.0" text="Управление клиентами" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="combBx" layoutX="186.0" layoutY="405.0" opacity="0.86" prefHeight="26.0" prefWidth="171.0" promptText="поле поиска" />
+      <Label fx:id="labelForBox" layoutX="186.0" layoutY="384.0" prefHeight="18.0" prefWidth="171.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelField" alignment="CENTER" layoutX="186.0" layoutY="493.0" prefHeight="18.0" prefWidth="171.0" />
+   </children>
+</AnchorPane>
